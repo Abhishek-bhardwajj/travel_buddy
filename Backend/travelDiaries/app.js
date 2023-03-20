@@ -5,7 +5,6 @@ import userRouter from "./routing/user-routes";
 const app = express();
 dotenv.config();
 
-
 //middleware
 app.use("/user", userRouter);
 
