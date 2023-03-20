@@ -1,5 +1,5 @@
 import User from "../models/User";
-export const getALLUsers=async () =>
+export const getAllUsers=async () =>
 {
     let users;
     try{
@@ -12,6 +12,6 @@ export const getALLUsers=async () =>
     {
         return res.status(500).json({message : "Unexpected Error Occured"});
     }
-    
+
     return res.status(200).json({ users });
 };
