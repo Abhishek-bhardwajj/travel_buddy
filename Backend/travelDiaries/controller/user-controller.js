@@ -1,3 +1,4 @@
+import { hashSync } from "bcryptjs";
 import User from "../models/User";
 
 export const getAllUsers = async (req, res) => {
@@ -27,9 +28,11 @@ export const signup = async(req, res, next) => {
         return res.status(422).json({ message: "Inavalid Data" });
       }
 
+      const hashedPassword = hashSync(password);
+
     let user;
     try {
-        user = new User({ name, email, password});
+        user = new User({ name, email, password: hashedPassword});
         await user.save();
     } catch (err) {
         return console.log(err);
