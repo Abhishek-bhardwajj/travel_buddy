@@ -1,12 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import { Box, Button, FormLabel, TextField, Typography } from "@mui/material";
+import { addPost } from "../api-helpers/helpers";
+import { useNavigate } from 'react-router';
 
 
 
-const Add= () => {
+
+const Add = () => {
+  const navigate =useNavigate();
+  const[inputs, setInputs] = useState({
+    title: "",
+    description: "",
+    location: "",
+    imageUrl: "",
+    date: "",
+  });
+  const handleChange = (e) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const onResReceived = (data) => {
+    console.log(data);
+    navigate("/diaries");
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs);
+    addPost(inputs)
+      .then(onResReceived)
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <Box display="flex" flexDirection={"column"} width="100%" height="100%">
+    
+     <Box display="flex" flexDirection={"column"} width="100%" height="100%">
       <Box display="flex" margin="auto" padding={2}>
         <Typography
           fontWeight={"bold"}
@@ -19,7 +49,7 @@ const Add= () => {
           sx={{ fontSize: "40px", paddingLeft: 1, color: "lightcoral  " }}
         />
       </Box>
-      <form >
+      <form onSubmit={handleSubmit}> 
         <Box
           padding={3}
           display="flex"
@@ -29,43 +59,43 @@ const Add= () => {
         >
           <FormLabel sx={{ fontFamily: "quicksand", fontWeight:"bold" }}>Title</FormLabel>
           <TextField
-            // onChange={handleChange}
+            onChange={handleChange}
             name="title"
-            // value={inputs.title}
+            value={inputs.title}
             variant="standard"
             margin="normal"
           />
           <FormLabel sx={{ fontFamily: "quicksand",fontWeight:"bold" }}>Description</FormLabel>
           <TextField
-            // onChange={handleChange}
+            onChange={handleChange}
             name="description"
-            // value={inputs.description}
+            value={inputs.description}
             variant="standard"
             margin="normal"
           />
           <FormLabel sx={{ fontFamily: "quicksand" , fontWeight:"bold"}}>Image URL</FormLabel>
           <TextField
-            // onChange={handleChange}
+            onChange={handleChange}
             name="imageUrl"
-            // value={inputs.imageUrl}
+            value={inputs.imageUrl}
             variant="standard"
             margin="normal"
           />
 
           <FormLabel sx={{ fontFamily: "quicksand" , fontWeight:"bold"}}>Location</FormLabel>
           <TextField
-            // onChange={handleChange}
+            onChange={handleChange}
             name="location"
-            // value={inputs.location}
+            value={inputs.location}
             variant="standard"
             margin="normal"
           />
           <FormLabel sx={{ fontFamily: "quicksand", fontWeight:"bold" }}>Date</FormLabel>
           <TextField
             type="date"
-            // onChange={handleChange}
+            onChange={handleChange}
             name="date"
-            // value={inputs.date}
+            value={inputs.date}
             variant="standard"
             margin="normal"
           />
@@ -81,8 +111,8 @@ const Add= () => {
       </form>
 
     </Box>
-  )
+  );
   
-}
+};
 
-export default Add
+export default Add;

@@ -1,8 +1,10 @@
-import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material'
-import React from 'react'
+import { Alert, Avatar, Box,  Card, CardActions, CardContent, CardHeader, IconButton, Snackbar, Typography } from '@mui/material'
+import { Link } from "react-router-dom";
 import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import React, { useState } from "react";
+import {postDelete} from "../api-helpers/helpers"
 
 const DiaryItem = ({
   title,
@@ -14,11 +16,24 @@ const DiaryItem = ({
   user,
   name,
 })=> {
+  const [open, setOpen] = useState(false);
+  const isLoogedInUser = () => {
+    if (localStorage.getItem("userId") === user) {
+      return true;
+    }
+    return false;
+  };
+  const handleDelete = () => {
+    postDelete(id)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+    setOpen(true);
+  };
   return (
     <Card
     sx={{
       width: "50%",
-      height: "60vh",
+      height: "auto",
       margin: 1,
       padding: 1,
       display: "flex",
@@ -30,7 +45,7 @@ const DiaryItem = ({
       avatar={
         <Avatar
          sx={{ bgcolor: 'red'}} aria-label="recipe">
-          R
+          {name.charAt(0)}
         </Avatar>
       }
       action={
@@ -62,7 +77,7 @@ const DiaryItem = ({
             fontWeight={"bold"}
             variant="caption"
           >
-          Travel Diaries:
+          {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
           {description}
@@ -71,14 +86,24 @@ const DiaryItem = ({
 
      
     </CardContent>
-    <CardActions sx={{ marginLeft: "auto" }}>
-      <IconButton color="warning"><ModeEditOutlineIcon/></IconButton>
-      <IconButton color="error"><DeleteForeverIcon/></IconButton>
+    { isLoogedInUser() && ( <CardActions sx={{ marginLeft: "auto" }}>
+      <IconButton  LinkComponent={Link} to={`/post/${id}`}color="warning"><ModeEditOutlineIcon/></IconButton>
+      <IconButton onClick={handleDelete} color="error"><DeleteForeverIcon/></IconButton>
     </CardActions>
+    )}
+    <Snackbar 
+        open={open} 
+        autoHideDuration={6000} 
+        onClose={() =>setOpen(false)}
+        >
+      <Alert onClose={()=> setOpen(false)} severity="success" sx={{ width: '100%' }}>
+        This is a success message!
+      </Alert>
+  </Snackbar>
     
     
   </Card>
-  )
-}
+  );
+};
 
 export default DiaryItem
