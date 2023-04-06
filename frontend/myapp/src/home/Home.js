@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 
 function Home() {
@@ -7,8 +7,7 @@ function Home() {
       <img src="road.jpg" alt="Road"  width={"100%"} height="70%"/>
         <Typography 
         variant="h2"
-        // font-family: 'Alkatra', cursive;
-        font-family= {"Libre Baskerville, serif"}
+        fontFamily={"dancing script"}
         fontWeight="bold"
         textAlign={"center"} 
         width="100%"
@@ -28,6 +27,13 @@ function Home() {
         <Typography textAlign={"center"} variant='h4' padding={4}>
         Share  Your Travel Diaries
         </Typography>
+        <Box margin="auto">
+        <Button variant="outlined" sx={{ mr:2}}> Share Your Story</Button>
+        <Button variant="contained" sx={{ ml:2 }}> View Diaries</Button>
+
+            
+
+        </Box>
       </Box>
 
   </Box>
