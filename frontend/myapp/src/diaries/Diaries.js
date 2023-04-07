@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import DiaryItem from './DiaryItem'
 import { getAllPosts } from '../api-helpers/helpers';
+//  import onResReceived from 'onResReceived';
 
 const Diaries = () => {
   const [posts, setPosts] = useState();
@@ -28,8 +29,8 @@ const Diaries = () => {
             location={item.location}
             title={item.title}
             key={index}
-            // user={item.user._id}
-            // name={item.user.name}
+            user={item.user._id}
+            name={item.user.name}
           />
       )} 
     </Box>

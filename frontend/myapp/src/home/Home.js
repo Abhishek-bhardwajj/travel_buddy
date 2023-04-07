@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -28,8 +29,8 @@ function Home() {
         Share  Your Travel Diaries
         </Typography>
         <Box margin="auto">
-        <Button variant="outlined" sx={{ mr:2}}> Share Your Story</Button>
-        <Button variant="contained" sx={{ ml:2 }}> View Diaries</Button>
+        <Button  LinkComponent={Link} to="/add" variant="contained" sx={{ mr:2}}> Share Your Story</Button>
+        <Button  LinkComponent={Link} to="/diaries" variant="contained" sx={{ ml:2 }}> View Diaries</Button>
 
             
 
