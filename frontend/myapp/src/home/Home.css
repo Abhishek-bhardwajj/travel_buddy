@@ -1,0 +1,25 @@
+.head-text {
+    position: relative;
+    height: 60%;
+    width: 100%;
+ }
+ .text-on-image {
+   position: absolute; 
+    top: 0px;
+    color: black; 
+    text-align: center;
+    width: 100%;
+ }
+ .text{
+    text-shadow: 0 0 25px black;
+    font-weight: bold;
+    font-size: 400px;
+ }
+ .images{
+    width: 100%;
+    height: 70%;
+    border-radius: 60px;
+ }
+ .body{
+    background-color: whitesmoke;
+ }

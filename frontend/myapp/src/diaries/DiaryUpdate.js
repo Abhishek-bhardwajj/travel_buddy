@@ -39,10 +39,10 @@ const[inputs, setInputs] = useState({
           [e.target.name]: e.target.value,
         }));
       };
-      const onResReceived = (data) => {
-        console.log(data);
-        Navigate("/diaries");
-      };
+      // const onResReceived = (data) => {
+      //   console.log(data);
+      //   Navigate("/diaries");
+      // };
       const handleSubmit = (e) => {
         e.preventDefault();
         console.log(inputs);
