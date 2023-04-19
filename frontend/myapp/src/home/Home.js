@@ -11,7 +11,7 @@ function Home() {
     <Box position={"relative"} width="100%" height="90vh" className='body'>
       <img src={road2} alt="Road" className='images'/>
         <Typography 
-        variant="h3"
+        variant="h4"
         fontFamily={"dancing script"}
         fontWeight="bold"
         textAlign={"center"} 
