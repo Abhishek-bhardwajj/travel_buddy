@@ -5,7 +5,7 @@ import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import React, { useState } from "react";
 import {postDelete} from "../api-helpers/helpers"
-
+import "./DiaryItem.css"
 const DiaryItem = ({
   title,
   description,
@@ -31,6 +31,7 @@ const DiaryItem = ({
   };
   return (
     <Card
+    className='template'
     sx={{
       width: "50%",
       height: "auto",
