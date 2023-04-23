@@ -31,7 +31,8 @@ const Profile = () => {
         textAlign={"center"}
         variant="h3"
         fontFamily={"quicksand"}
-        padding={2}
+        padding={1}
+        textShadow={"0 0 10px brown"}
       >
       User Profile
 
