@@ -4,7 +4,7 @@ import { sendAuthRequest } from '../api-helpers/helpers';
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
-
+import image from "../assets/bluebg.png";
 const Auth=()=> {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Auth=()=> {
       [e.target.name]: e.target.value,
     }));
 
-  };
+};
 
   return(
   <Box
@@ -48,8 +48,11 @@ const Auth=()=> {
   borderRadius={10}
   boxShadow={"5px 5px 10px #ccc"}
   margin="auto"
-  marginTop={10}
->
+  marginTop={1}
+  sx={{ backgroundImage : `url(${image})`}}
+ 
+  >
+
   <form onSubmit={handleSubmit}>
     <Box
       display="flex"
